@@ -1,0 +1,26 @@
+{
+  "name": "@thatguy/ylight",
+  "version": "1.0.0",
+  "description": "A CLI for controlling my yeelights",
+  "main": "src/main.js",
+  "bin": {
+    "@thatguy/ylight": "bin/ylight",
+    "ylight": "bin/ylight"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cli",
+    "ylight"
+  ],
+  "author": "SpyrosGeo",
+  "license": "ISC",
+  "dependencies": {
+    "babel": "^6.23.0",
+    "esm": "^3.2.25"
+  }
+}
