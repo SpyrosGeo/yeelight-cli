@@ -1,14 +1,29 @@
 var exec = require('child_process').exec;
-import fs from 'fs';
-import ip from '../scripts/ipInit';
+var inquirer = require('inquirer');
 export function cli(args){
   const cmd = args[2];
- 
-  const fnArg = (JSON.stringify(args.splice(2)));
-    if(fnArg ==='["init"]'){
-      console.log(ip);
+  const fnArg = (args.splice(2));
+  
+  const questions =[
+    {
+      name:'ip',
+      type:'input',
+      message:'Enter the Yeelights Local IP',
+      validate:function(value){
+        if(value.length){
+          // console.log(value);
+          return true;
+        }
+      }
     }
-    if(cmd === "on"){
+  ]
+  
+
+    if(cmd ==="init"){
+      inquirer.prompt(questions).then(answers =>{
+        console.log(answers.ip);
+      });
+    }else if(cmd === "on"){
       exec('scripts/yeelight-scene.sh 0 On');
       console.log("light On");
     }else if(cmd === "off"){
@@ -18,7 +33,7 @@ export function cli(args){
       exec('scripts/yeelight-scene.sh 0 4300');
     }else if(cmd === "warm" ){
       exec('scripts/yeelight-scene.sh 0 Warm');
-    }else if(args.splice(2).length === 0){
+    }else if(fnArg.length === 0){
       console.log("use ylight on/off options");
     }
 
