@@ -1,9 +1,11 @@
 var exec = require('child_process').exec;
 var inquirer = require('inquirer');
+var finalIp='test';
+
+
 export function cli(args){
   const cmd = args[2];
   const fnArg = (args.splice(2));
-  
   const questions =[
     {
       name:'ip',
@@ -22,19 +24,25 @@ export function cli(args){
     if(cmd ==="init"){
       inquirer.prompt(questions).then(answers =>{
         console.log(answers.ip);
+        return finalIp = answers.ip;
       });
-    }else if(cmd === "on"){
-      exec('scripts/yeelight-scene.sh 0 On');
-      console.log("light On");
-    }else if(cmd === "off"){
-      exec('scripts/yeelight-scene.sh 0 Off');
-      console.log("light Off");
-    }else if(cmd === "4300"){
-      exec('scripts/yeelight-scene.sh 0 4300');
-    }else if(cmd === "warm" ){
-      exec('scripts/yeelight-scene.sh 0 Warm');
-    }else if(fnArg.length === 0){
+    }else if(cmd === "on"|| cmd ==="off"|| cmd ==="disco"||cmd ==="warm"){
+      //added Capitalization of the first letter to work with the script
+      exec(`/home/thatguy/My-repos/ylight/scripts/yeelight-scene.sh 0 ${cmd.charAt(0).toUpperCase()+cmd.slice(1)}`);
+      console.log(`lights ${cmd}!`);
+    }else if(cmd === "default"|| cmd ==="4300"){
+      exec('/home/thatguy/My-repos/ylight/scripts/yeelight-scene.sh 0 4300');
+      exec('/home/thatguy/My-repos/ylight/scripts/yeelight-brightness.sh 0 100');
+    }else if(cmd === "50"||cmd==="100") {
+      exec(`/home/thatguy/My-repos/ylight/scripts/yeelight-brightness.sh 0 ${cmd}`);
+    }
+    
+    else if(fnArg.length === 0){
       console.log("use ylight on/off options");
     }
-
+    
 }
+
+
+
+

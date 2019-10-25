@@ -2,7 +2,7 @@
   "name": "@thatguy/ylight",
   "version": "1.0.0",
   "description": "A CLI for controlling my yeelights",
-  "main": "src/main.js",
+  "main": "src/cli.js",
   "bin": {
     "@thatguy/ylight": "bin/ylight",
     "ylight": "bin/ylight"
