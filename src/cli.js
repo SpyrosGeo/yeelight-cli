@@ -35,6 +35,9 @@ export function cli(args){
       exec('/home/thatguy/My-repos/ylight/scripts/yeelight-brightness.sh 0 100');
     }else if(cmd === "50"||cmd==="100") {
       exec(`/home/thatguy/My-repos/ylight/scripts/yeelight-brightness.sh 0 ${cmd}`);
+    }else if (cmd === "help"){
+      console.log("Use the following commands: on||off||disco||warm||default");
+      console.log("You can also use commands to set Brightness with number pernentage without the %");
     }
     
     else if(fnArg.length === 0){
