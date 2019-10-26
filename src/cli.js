@@ -20,13 +20,8 @@ export function cli(args){
     }
   ]
   
-
-    if(cmd ==="init"){
-      inquirer.prompt(questions).then(answers =>{
-        console.log(answers.ip);
-        return finalIp = answers.ip;
-      });
-    }else if(cmd === "on"|| cmd ==="off"|| cmd ==="disco"||cmd ==="warm"){
+  
+     if(cmd === "on"|| cmd ==="off"|| cmd ==="disco"||cmd ==="warm"){
       //added Capitalization of the first letter to work with the script
       exec(`/home/thatguy/My-repos/ylight/scripts/yeelight-scene.sh 0 ${cmd.charAt(0).toUpperCase()+cmd.slice(1)}`);
       console.log(`lights ${cmd}!`);
@@ -38,11 +33,10 @@ export function cli(args){
     }else if (cmd === "help"){
       console.log("Use the following commands: on||off||disco||warm||default");
       console.log("You can also use commands to set Brightness with number pernentage without the %");
+    } else if (cmd !== "on" || cmd !== "off" || cmd !== "disco" || cmd !== "warm" || cmd !== "default" || cmd !== "help") {
+      console.log("Not valid command! use 'help'");
     }
     
-    else if(fnArg.length === 0){
-      console.log("use ylight on/off options");
-    }
     
 }
 
