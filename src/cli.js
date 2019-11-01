@@ -4,7 +4,7 @@ var finalIp='test';
 
 
 export function cli(args){
-  const cmd = args[2];
+  const cmd = args[2].toLowerCase();
   const fnArg = (args.splice(2));
   const questions =[
     {
