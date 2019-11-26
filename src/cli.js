@@ -4,22 +4,15 @@ var finalIp='test';
 
 
 export function cli(args){
+  if(args[2] == null){
+    console.log("Use the following commands: on||off||disco||warm||default|red|green|blue");
+    console.log("You can also use commands to set Brightness with number pernentage without the % ");
+  }else {
   const cmd = args[2].toLowerCase();
   const fnArg = (args.splice(2));
-  const questions =[
-    {
-      name:'ip',
-      type:'input',
-      message:'Enter the Yeelights Local IP',
-      validate:function(value){
-        if(value.length){
-          // console.log(value);
-          return true;
-        }
-      }
-    }
-  ]
-  
+  const rgb = args[3];
+  console.log(args);
+ 
   
      if(cmd === "on"|| cmd ==="off"|| cmd ==="disco"||cmd ==="warm"){
       //added Capitalization of the first letter to work with the script
@@ -28,18 +21,22 @@ export function cli(args){
     }else if(cmd === "default"|| cmd ==="4300"){
       exec('/home/thatguy/My-repos/ylight/scripts/yeelight-scene.sh 0 4300');
       exec('/home/thatguy/My-repos/ylight/scripts/yeelight-brightness.sh 0 100');
+	console.log("setting to default!");
     }else if(cmd === "50"||cmd==="100") {
       exec(`/home/thatguy/My-repos/ylight/scripts/yeelight-brightness.sh 0 ${cmd}`);
-    }else if (cmd === "help"){
-      console.log("Use the following commands: on||off||disco||warm||default");
-      console.log("You can also use commands to set Brightness with number pernentage without the %");
-    } else if (cmd !== "on" || cmd !== "off" || cmd !== "disco" || cmd !== "warm" || cmd !== "default" || cmd !== "help") {
-      console.log("Not valid command! use 'help'");
+    }else if(cmd ==="blue"){
+      exec(`/home/thatguy/My-repos/ylight/scripts/yeelight-rgb.sh 0 0,0,255`);
+    }else if(cmd ==="red"){
+      exec(`/home/thatguy/My-repos/ylight/scripts/yeelight-rgb.sh 0 255,0,0`);
+    }else if(cmd ==="green"){
+      exec(`/home/thatguy/My-repos/ylight/scripts/yeelight-rgb.sh 0 0,255,0`);
+    }else if (cmd !== "on" || cmd !== "off" || cmd !== "disco" || cmd !== "warm" || cmd !== "default" || cmd !== "help") {
+      console.log("Not valid command! run 'ylight' for commands");
     }
     
     
 }
 
-
+}
 
 
