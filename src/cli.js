@@ -11,15 +11,14 @@ export function cli(args){
   const cmd = args[2].toLowerCase();
   const fnArg = (args.splice(2));
   const rgb = args[3];
-  console.log(args);
  
   
      if(cmd === "on"|| cmd ==="off"|| cmd ==="disco"||cmd ==="warm"){
       //added Capitalization of the first letter to work with the script
       exec(`/home/thatguy/My-repos/ylight/scripts/yeelight-scene.sh 0 ${cmd.charAt(0).toUpperCase()+cmd.slice(1)}`);
       console.log(`lights ${cmd}!`);
-    }else if(cmd === "default"|| cmd ==="4300"){
-      exec('/home/thatguy/My-repos/ylight/scripts/yeelight-scene.sh 0 4300');
+    }else if(cmd === "default"|| cmd ==="6500"){
+      exec('/home/thatguy/My-repos/ylight/scripts/yeelight-scene.sh 0 6500');
       exec('/home/thatguy/My-repos/ylight/scripts/yeelight-brightness.sh 0 100');
 	console.log("setting to default!");
     }else if(cmd === "50"||cmd==="100") {
