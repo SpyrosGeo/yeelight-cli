@@ -23,6 +23,6 @@
     "babel": "^6.23.0",
     "esm": "^3.2.25",
     "inquirer": "^7.0.0",
-    "python-shell": "^1.0.8"
+    "yeelight-platform": "^1.0.9"
   }
 }
