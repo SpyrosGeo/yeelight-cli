@@ -1,6 +1,5 @@
 'use strict'
 var exec = require('child_process').exec;
-let {PythonShell} = require('python-shell')
 const fs = require('fs');
 var path = require('path')
 let ip ='test'
